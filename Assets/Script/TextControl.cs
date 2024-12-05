@@ -1,5 +1,5 @@
-using TMPro;
 using UnityEngine;
+using TMPro;
 
 public class TextControl : MonoBehaviour
 {
@@ -10,20 +10,20 @@ public class TextControl : MonoBehaviour
     
     public void SetAllText(string category, string level, string error, string tip){
         SetCategory(category);
-        SetStorage(level);
+        SetLevel(level);
         SetError(error);
         SetTip(tip);
     }
     public void SetCategory(string category){
-        categoryText.text = category;
+        categoryText.text = "Categoria: \n" + category;
     }
-    public void SetStorage(string level){
-        levelText.text = level;
+    public void SetLevel(string level){
+        levelText.text = "Level: " + level;
     }
     public void SetError(string error){
-        errorText.text = error;
+        errorText.text = "Erros: " + error;
     }
     public void SetTip(string tip){
-        tipText.text = tip;
+        tipText.text = "Dica: " + tip;
     }
 }

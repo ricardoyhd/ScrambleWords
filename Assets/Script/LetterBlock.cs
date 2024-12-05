@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -10,13 +9,16 @@ public class LetterBlock : MonoBehaviour
     public class BlockLetter
     {
         public Button button;
-        public TextMeshProUGUI letter;
+        public TextMeshProUGUI letterText;
+        public char letter;
     }
     [SerializeField] private List<BlockLetter> _letterBlock = new List<BlockLetter>();
     private LogicScript _logicScript;
+    private Pilha _pilha;
     void Start()
     {
         _logicScript = GetComponent<LogicScript>();
+        _pilha = GetComponent<Pilha>();
     }
     void Update()
     {
@@ -30,13 +32,12 @@ public class LetterBlock : MonoBehaviour
 
         for(int i = 0; i < 5; i++)
         {
-            _letterBlock[i].letter.text = scrambledLetters[i].ToString();
+            _letterBlock[i].letter = scrambledLetters[i]; // variável char
+            _letterBlock[i].letterText.text = scrambledLetters[i].ToString(); // letra que aparece no jogo
         }
     }
-    public char[] GetScrambledWord(char[] letters) //escolher a palavra
+    public char[] GetScrambledWord(char[] letters) // embaralhar palavra usando Knuth Shuffle
     {
-        System.Random rand = new System.Random();
-
         for (int i = letters.Length - 1; i > 0; i--)
         {
             int j = Random.Range(0, i + 1);
@@ -45,5 +46,21 @@ public class LetterBlock : MonoBehaviour
             letters[j] = temp;
         }
         return letters;
+    }
+
+    public void CheckLetterBlock(int index){ // chamar quando é clicado no botão específico 
+        // adicionar animação para ir até o bloco
+        bool DeuCerto = false;
+        _pilha.Empilhar(_letterBlock[index].letter, ref DeuCerto);
+        Debug.Log(DeuCerto);
+        if(DeuCerto){
+            // bloco fica no lugar
+            // pilha vai pro próximo
+        }
+        else{
+            // animação de voltar
+            // soma 1 para o erro _logicScript.AddError
+            // tenta denovo
+        }
     }
 }

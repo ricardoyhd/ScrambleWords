@@ -12,7 +12,7 @@ public class ImageControl : MonoBehaviour
         public string dica;
     }
 
-    [SerializeField] private List<SpriteData> _sprites = new List<SpriteData>();
+    [SerializeField] public List<SpriteData> _sprites = new List<SpriteData>();
     [SerializeField] private Image _block;
     [SerializeField] private Sprite _currentSprite;
 

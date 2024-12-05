@@ -497,7 +497,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &261975083
 RectTransform:
   m_ObjectHideFlags: 0
@@ -577,7 +577,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'JOGO '
+  m_text: 'Scramble
+
+    Tech'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -604,13 +606,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 235.6
-  m_fontSizeBase: 235.6
+  m_fontSize: 176.01
+  m_fontSizeBase: 176.01
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -3470,7 +3472,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1348175129}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1855892343}
+        m_TargetAssemblyTypeName: ScreenControl, Assembly-CSharp
+        m_MethodName: SetActiveScreen
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Game
+          m_BoolArgument: 0
+        m_CallState: 1
+      - m_Target: {fileID: 1855892349}
+        m_TargetAssemblyTypeName: LogicScript, Assembly-CSharp
+        m_MethodName: NextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &1348175129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3666,7 +3692,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1473220680}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1855892343}
+        m_TargetAssemblyTypeName: ScreenControl, Assembly-CSharp
+        m_MethodName: SetActiveScreen
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Start
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &1473220680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3739,7 +3777,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 22}
   m_SizeDelta: {x: 1218.305, y: 279.304}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1476555220
@@ -3763,7 +3801,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "O jogo consiste em desembaralhar uma sequ\xEAncia de 5 palavras misteriosas
-    de 5 letras, com o objetivo de acertar todas elas"
+    relacionadas \xE0 computa\xE7\xE3o de 5 letras, com o objetivo de acertar todas
+    elas"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3790,14 +3829,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 77.6
-  m_fontSizeBase: 77.6
+  m_fontSize: 70.33
+  m_fontSizeBase: 70.33
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 8
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -4620,7 +4659,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -340.8}
+  m_AnchoredPosition: {x: 0, y: -340}
   m_SizeDelta: {x: 620, y: 170}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1834409548
@@ -4666,7 +4705,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1834409549}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1855892343}
+        m_TargetAssemblyTypeName: ScreenControl, Assembly-CSharp
+        m_MethodName: SetActiveScreen
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Instructions
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &1834409549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4879,6 +4930,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentWord: 
   currentIndex: 0
+  level: 0
   errors: 0
 --- !u!114 &1855892350
 MonoBehaviour:
@@ -4894,15 +4946,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _letterBlock:
   - button: {fileID: 1339365988}
-    letter: {fileID: 1095919894}
+    letterText: {fileID: 1095919894}
+    letter: 97
   - button: {fileID: 1222255670}
-    letter: {fileID: 1078898039}
+    letterText: {fileID: 1078898039}
+    letter: 97
   - button: {fileID: 1780257456}
-    letter: {fileID: 1504318826}
+    letterText: {fileID: 1504318826}
+    letter: 97
   - button: {fileID: 405931479}
-    letter: {fileID: 2083183170}
+    letterText: {fileID: 2083183170}
+    letter: 97
   - button: {fileID: 1632262636}
-    letter: {fileID: 919532281}
+    letterText: {fileID: 919532281}
+    letter: 97
 --- !u!114 &1855892351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5098,7 +5155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -400}
+  m_AnchoredPosition: {x: 0, y: -340}
   m_SizeDelta: {x: 620, y: 170}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1948898880
@@ -5144,7 +5201,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1948898881}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1855892343}
+        m_TargetAssemblyTypeName: ScreenControl, Assembly-CSharp
+        m_MethodName: SetActiveScreen
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Start
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &1948898881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5217,7 +5286,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 373}
+  m_AnchoredPosition: {x: 0, y: 351}
   m_SizeDelta: {x: 1218.305, y: 279.304}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1985173010
@@ -5267,13 +5336,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 124.1
-  m_fontSizeBase: 124.1
+  m_fontSize: 132.3
+  m_fontSizeBase: 132.3
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
