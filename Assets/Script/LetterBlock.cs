@@ -11,17 +11,26 @@ public class LetterBlock : MonoBehaviour
         public Button button;
         public TextMeshProUGUI letterText;
         public char letter;
+        public GameObject Block;
     }
     [SerializeField] private List<BlockLetter> _letterBlock = new List<BlockLetter>();
+    [SerializeField] private List<Vector2> _letterBlockOriginalPositions = new List<Vector2>();
     private LogicScript _logicScript;
     private Pilha _pilha;
+    private BlocksControl _blocks;
     void Start()
     {
         _logicScript = GetComponent<LogicScript>();
         _pilha = GetComponent<Pilha>();
+        _blocks = GetComponent<BlocksControl>();
+        for(int i = 0; i < 5; i++)
+        {
+            _letterBlockOriginalPositions.Add(_letterBlock[i].Block.transform.position);
+        }
     }
     void Update()
     {
+        
     }
     public void GetLetterForBlock(string currentWord)
     {
@@ -48,19 +57,44 @@ public class LetterBlock : MonoBehaviour
         return letters;
     }
 
-    public void CheckLetterBlock(int index){ // chamar quando é clicado no botão específico 
+    public void CheckLetterBlock(int index) // chamar quando é clicado no botão específico 
+    {
         // adicionar animação para ir até o bloco
-        bool DeuCerto = false;
-        _pilha.Empilhar(_letterBlock[index].letter, ref DeuCerto);
-        Debug.Log(DeuCerto);
-        if(DeuCerto){
-            // bloco fica no lugar
-            // pilha vai pro próximo
+        if(_pilha.Empilhar(_letterBlock[index].letter, _logicScript.currentWord)){
+            _letterBlock[index].button.enabled = false; // não é possível clicar nele denovo
+            _blocks.GoToTarget(_letterBlock[index].Block, _pilha.GetIndex() - 1);
         }
         else{
             // animação de voltar
-            // soma 1 para o erro _logicScript.AddError
-            // tenta denovo
+            _logicScript.AddError();
         }
+    }
+
+    public void ResetLetterBlocks()
+    {
+        for(int i = 0; i < 5; i++)
+        {
+            _blocks.ReturnPositions(_letterBlock[i].Block, _letterBlockOriginalPositions[i]);
+        }
+    }
+    public void EnableAllButtons(bool state)
+    {
+        for(int i = 0; i < 5; i++)
+        {
+            _letterBlock[i].button.enabled = state;
+        }
+    }
+    public bool CheckWord()
+    {
+        if(_pilha.Cheia())
+        {
+            _pilha.LimparPilha();
+            return true;
+        }
+        return false;
+    }
+    public void LimparPilha()
+    {
+        _pilha.LimparPilha();
     }
 }

@@ -4,36 +4,29 @@ using UnityEngine;
 public class Pilha : MonoBehaviour
 {
     [SerializeField] private Stack<char> pilha = new Stack<char>();
-    public string ChosenWord;
 
-    public void Empilhar(char valor, ref bool DeuCerto)
+    public bool Empilhar(char valor, string currentWord)
     {
         if (!Cheia())
         {   
-            if(valor == ChosenWord[pilha.Count])
+            Debug.Log(valor);
+            Debug.Log(currentWord);
+            if(valor == currentWord[pilha.Count])
             {
-                // animação vai até o bloco
                 pilha.Push(valor);
-                DeuCerto = true;
+                return true;
             } 
-            else
-            {
-                DeuCerto = false;
-            }
         }
-        
+        return false;
     }
 
-    public void Remover()
+    public void LimparPilha()
     {
-        if (!Vazia())
+        while (!Vazia())
         {
             pilha.Pop();
         }
-        else
-        {
-            Debug.Log("Pilha vazia");
-        }
+        Debug.Log("Pilha vazia");
     }
 
     public bool Vazia()
@@ -43,6 +36,10 @@ public class Pilha : MonoBehaviour
     public bool Cheia()
     {
         return pilha.Count == 5;
+    }
+    public int GetIndex()
+    {
+        return pilha.Count;
     }
     public void MostrarPilha()
     {

@@ -8,7 +8,7 @@ public class LogicScript : MonoBehaviour
     private AvoidSameWord _avoidSameWord;
     private LetterBlock _letterBlock;
     public string currentWord;
-    public int currentIndex, level, errors;
+    public int currentIndex, level, error, incorrect;
 
     void Start()
     {
@@ -17,11 +17,14 @@ public class LogicScript : MonoBehaviour
         _screenControl = GetComponent<ScreenControl>();
         _avoidSameWord = GetComponent<AvoidSameWord>();
         _letterBlock = GetComponent<LetterBlock>();
-        ResetLevel();
+        ResetLevels();
     }
     void Update()
     {
-        
+        if(_letterBlock.CheckWord())
+        {
+            NextLevel();
+        }
     }
 
     public void NextLevel()
@@ -34,34 +37,58 @@ public class LogicScript : MonoBehaviour
             }
             _letterBlock.GetLetterForBlock(currentWord);
             _imageControl.SetImage(currentWord);
+            _textControl.TipCategoryText(false);
+            _letterBlock.EnableAllButtons(true);
+            error = 0;
             UpdateTexts();
         }
     }
-    public bool AddLevel(){
-        if(level <= 5){
+    public bool AddLevel()
+    {
+        _letterBlock.ResetLetterBlocks();
+        if(level < 5){
             level++;
             return true;
         }
         else{
-            _screenControl.SetActiveScreen("end"); // chamar tela final
-            // resetar
+            _screenControl.SetActiveScreen("End"); // chamar tela final
+            _textControl.SetEndText((5 - incorrect).ToString());
+            ResetLevels();
             return false;
         }
     }
-    public void ResetLevel(){
-        level = 0;
+    public void AddError()
+    {
+        error++;
+        _textControl.SetError(error.ToString());
+        if(error == 1)
+        {
+            _textControl.TipCategoryText(true);
+        }
+        if(error == 3)
+        {
+            incorrect++;
+            error = 0;
+            _letterBlock.LimparPilha();
+            NextLevel();
+        }
     }
-    public void UpdateTexts(){
+    public void ResetLevels()
+    {
+        level = 0;
+        incorrect = 0;
+    }
+    public void UpdateTexts()
+    {
         _textControl.SetAllText(
             _imageControl._sprites[currentIndex].grupo, 
             level.ToString(), 
-            errors.ToString(), 
+            error.ToString(), 
             _imageControl._sprites[currentIndex].dica);
     }
-
     public void SortWord() //escolher a palavra
     {
-        currentIndex = UnityEngine.Random.Range(0, _imageControl.CountList());
+        currentIndex = Random.Range(0, _imageControl.CountList());
         currentWord = _imageControl.SelectWord(currentIndex);
     }
 }
